@@ -16,6 +16,8 @@
 import sbt._
 import Keys._
 
+import com.typesafe.sbt.site.SphinxSupport.Sphinx
+import com.typesafe.sbt.SbtSite.site
 import com.typesafe.sbt.osgi.SbtOsgi.{ OsgiKeys, osgiSettings, defaultOsgiSettings }
 
 object Version {
@@ -97,6 +99,13 @@ object Nobootcp {
     testNobootcpSettings
 }
 
+// TODO: Make a project called "es-site"
+object SbtSite {
+  val defaultSettings = site.settings ++ site.sphinxSupport() ++ Seq(
+    sourceDirectory in Sphinx <<= baseDirectory / "es-site/rst"
+    )
+}
+
 object EventsourcedBuild extends Build {
   lazy val defaultSettings =
     Defaults.defaultSettings ++
@@ -104,6 +113,7 @@ object EventsourcedBuild extends Build {
     Publish.defaultSettings ++
     Tests.defaultSettings ++
     Osgi.defaultSettings
+    
 
   lazy val unidocExcludeSettings = Seq(
     Unidoc.unidocExclude := Seq(esCoreTest.id, esExamples.id)
@@ -114,7 +124,7 @@ object EventsourcedBuild extends Build {
   lazy val es = Project(
     id = "eventsourced",
     base = file("."),
-    settings = defaultSettings ++ unidocSettings ++ Publish.parentSettings
+    settings = defaultSettings ++ unidocSettings ++ Publish.parentSettings ++ SbtSite.defaultSettings
   ) aggregate(esCore, esCoreTest, esExamples, esJournal)
 
   lazy val esCore = Project(

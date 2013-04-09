@@ -16,8 +16,9 @@
 import sbt._
 import Keys._
 
-import com.typesafe.sbt.site.SphinxSupport.Sphinx
 import com.typesafe.sbt.SbtSite.site
+import com.typesafe.sbt.site.SphinxSupport
+import com.typesafe.sbt.site.SphinxSupport.{ sphinxInputs, sphinxPackages, Sphinx }
 import com.typesafe.sbt.osgi.SbtOsgi.{ OsgiKeys, osgiSettings, defaultOsgiSettings }
 
 object Version {
@@ -99,13 +100,6 @@ object Nobootcp {
     testNobootcpSettings
 }
 
-// TODO: Make a project called "es-site"
-object SbtSite {
-  val defaultSettings = site.settings ++ site.sphinxSupport() ++ Seq(
-    sourceDirectory in Sphinx <<= baseDirectory / "es-site/rst"
-    )
-}
-
 object EventsourcedBuild extends Build {
   lazy val defaultSettings =
     Defaults.defaultSettings ++
@@ -124,8 +118,8 @@ object EventsourcedBuild extends Build {
   lazy val es = Project(
     id = "eventsourced",
     base = file("."),
-    settings = defaultSettings ++ unidocSettings ++ Publish.parentSettings ++ SbtSite.defaultSettings
-  ) aggregate(esCore, esCoreTest, esExamples, esJournal)
+    settings = defaultSettings ++ unidocSettings ++ Publish.parentSettings
+  ) aggregate(esCore, esCoreTest, esExamples, esJournal, esSite)
 
   lazy val esCore = Project(
     id = "eventsourced-core",
@@ -142,6 +136,15 @@ object EventsourcedBuild extends Build {
     esJournalHbase % "test->it;compile->compile",
     esJournalMongodbCasbah % "test->test;compile->compile",
     esJournalMongodbReactive % "test->it;compile->compile"
+  )
+
+  lazy val esSite = Project(
+    id = "eventsourced-site",
+    base = file("es-site"),
+    settings = defaultSettings ++ site.settings ++ site.sphinxSupport() ++ Seq(
+      sourceDirectory in Sphinx <<= baseDirectory / "rst",
+      publishArtifact in Compile := false
+    )
   )
 
   lazy val esExamples = Project(

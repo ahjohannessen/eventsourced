@@ -143,6 +143,7 @@ object EventsourcedBuild extends Build {
     base = file("es-site"),
     settings = defaultSettings ++ site.settings ++ site.sphinxSupport() ++ Seq(
       sourceDirectory in Sphinx <<= baseDirectory / "rst",
+      sphinxPackages in Sphinx <+= baseDirectory { _ / "_sphinx" / "pygments" },
       publishArtifact in Compile := false
     )
   )

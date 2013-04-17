@@ -136,7 +136,7 @@ Building blocks
 
 The core building blocks provided by Eventsourced are processors,
 channels and journals. These are managed by an Akka extension, the
-```EventsourcingExtension`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__.
+`EventsourcingExtension <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__.
 
 Processor
 ^^^^^^^^^
@@ -144,11 +144,11 @@ Processor
 A processor is a stateful actor that logs (persists) messages it
 receives. A stateful actor is turned into a processor by modifying it
 with the stackable
-```Eventsourced`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
+`Eventsourced <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
 trait during construction. A processor can be used like any other actor.
 
 Messages wrapped inside
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
 are logged by a processor, unwrapped messages are not logged. Wrapped
 messages are often referred to as *events* in this user guide. Wrapped
 messages can also be *commands*, as explained in section
@@ -239,7 +239,7 @@ Application
 
 The Eventsourced library doesn't impose any restrictions on the
 structure and semantics of
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
 payloads. Hence, persistent messages can therefore be events as well as
 commands. The Eventsourced `reference
 application <https://github.com/eligosource/eventsourced-example>`__
@@ -304,7 +304,7 @@ Terminology
 In the following, the terms *persistent actor*, *event-sourced actor*,
 *event-sourced processor* and *processor* are used interchangeably.
 Furthermore, a
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
 is often referred to as *event message*.
 
 First steps
@@ -329,7 +329,7 @@ The legend to the figures used in this and other sections is in
 Step 1: ``EventsourcingExtension`` initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-```EventsourcingExtension`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__
+`EventsourcingExtension <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__
 is an Akka extension provided by the Eventsourced library. It is used by
 applications to
 
@@ -378,7 +378,7 @@ example,
     }
 
 is an actor that counts the number of received event
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s.
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s.
 In Eventsourced applications, events are always communicated
 (transported) via event ``Message``\ s.
 
@@ -387,7 +387,7 @@ Step 3: Event-sourced actor creation and recovery
 
 To make ``Processor`` an event-sourced actor, it must be modified with
 the stackable
-```Eventsourced`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
+`Eventsourced <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
 trait during instantiation.
 
 ::
@@ -412,7 +412,7 @@ Step 4: Event-sourced actor usage
 
 The event-sourced ``processor`` can be used like any other actor.
 Messages of type
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
 are written to the journal, messages of any other type are directly
 received by ``processor`` without being journaled.
 
@@ -500,11 +500,11 @@ A channel must have a unique id (``1`` in our example), a positive
 integer that must be consistently defined across application runs. Here,
 we create a `default channel <#defaultchannel>`__ that is configured
 with a
-```DefaultChannelProps`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.DefaultChannelProps>`__
+`DefaultChannelProps <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.DefaultChannelProps>`__
 configuration object. If applications need reliable event message
 delivery to destinations, they should use a `reliable
 channel <#reliablechannel>`__ that is configured with a
-```ReliableChannelProps`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannelProps>`__
+`ReliableChannelProps <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannelProps>`__
 configuration object.
 
 Assuming the following definition of a ``Destination`` actor
@@ -547,7 +547,7 @@ asynchronously writes a confirmation (an *acknowledgement*) to the
 journal that the message has been successfully delivered. Later, you'll
 also see how confirmation functionality can be added to destinations
 with the stackable
-```Confirm`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Confirm>`__
+`Confirm <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Confirm>`__
 trait.
 
 This `First steps <#first-steps>`__ guide is a rather low-level
@@ -563,7 +563,7 @@ Stackable traits
 |Eventsourced|
 
 The
-```Eventsourced`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
+`Eventsourced <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
 trait has already been discussed in section `First
 steps <#first-steps>`__. It can be combined with the stackable
 ``Receiver``, ``Emitter`` and/or ``Confirm`` traits where the
@@ -579,11 +579,11 @@ steps <#first-steps>`__. It can be combined with the stackable
 |Receiver|
 
 An actor that receives event
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s
 often wants to pattern-match against the contained ``event`` directly
 instead of the whole event message. This can be achieved by modifying it
 with the
-```Receiver`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Receiver>`__
+`Receiver <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Receiver>`__
 trait during instantiation.
 
 ::
@@ -638,7 +638,7 @@ for further details.
 
 Where a ``Receiver`` modification allows actors to pattern-match against
 incoming events directly instead of whole event ``Message``\ s, an
-```Emitter`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Emitter>`__
+`Emitter <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Emitter>`__
 introduces a corresponding simplification on the sending (outgoing)
 side. It allows actors to send (emit) events to channels without having
 to deal with whole event ``Message``\ s. An emitter can also lookup
@@ -665,7 +665,7 @@ Event messages sent by an emitter to a channel are always derived from
 ``Receiver`` and maintains a *current* event message, see also section
 `Receiver <#receiver>`__). A call to the ``emitter`` method with a
 channel name as argument creates a
-```MessageEmitter`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.MessageEmitter>`__
+`MessageEmitter <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.MessageEmitter>`__
 object that captures the named channel and the current event message.
 Calling ``sendEvent`` on that object modifies the captured event message
 with the specified event argument and sends the updated event message to
@@ -698,7 +698,7 @@ to redeliver the event message.
 
 Instead of calling ``confirm(true)`` or ``confirm(false)`` explicitly,
 actors can also be modified with the stackable
-```Confirm`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Confirm>`__
+`Confirm <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Confirm>`__
 trait. This trait calls ``confirm(true)`` on the received event message
 when the modified actor's ``receive`` method returns normally and
 ``confirm(false)`` when it throws an exception.
@@ -855,7 +855,7 @@ sender reference to a destination and let the destination reply to the
 sender. This even works if the destination is wrapped by a channel
 because a channel simply forwards sender references when delivering
 event messages to destinations. For that reason, a
-```ReliableChannel`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannel>`__
+`ReliableChannel <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannel>`__
 needs to store sender references (in contrast to processors). A reliable
 channel destination can even reply to a sender that was sending an event
 message in a previous application run (e.g. before the application
@@ -891,7 +891,7 @@ reply will go to ``deadLetters``.
     val processor: ActorRef = extension.processorOf(Props(new Processor(channel) with Eventsourced { val id = 1 } ))
 
 When using a
-```MessageEmitter`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.MessageEmitter>`__
+`MessageEmitter <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.MessageEmitter>`__
 (see also section `Emitter <#emitter>`__) applications can choose
 between methods ``sendEvent`` and ``forwardEvent`` where ``sendEvent``
 takes an implicit sender reference as parameter and ``forwardEvent``
@@ -921,9 +921,9 @@ as well as section `Channel usage <#step-5-channel-usage>`__ in the
 `First steps <#first-steps>`__ guide for an example.
 
 Currently, the library provides two different channel implementations,
-```DefaultChannel`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.DefaultChannel>`__
+`DefaultChannel <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.DefaultChannel>`__
 and
-```ReliableChannel`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannel>`__,
+`ReliableChannel <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannel>`__,
 and a pattern on top of ``ReliableChannel``, a `reliable request-reply
 channel <#reliable-request-reply-channel>`__. These are explained in the
 following subsections.
@@ -1001,17 +1001,17 @@ maximum number of re-delivery attempts have been made, the channel
 restarts itself after a certain *restart delay* and starts again with
 re-deliveries. If the maximum number of restarts has been reached, the
 channel stops message delivery and publishes a
-```DeliveryStopped`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Channel$$DeliveryStopped>`__
+`DeliveryStopped <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Channel$$DeliveryStopped>`__
 event to the event stream of the actor system this channel belongs to.
 Applications can then re-activate the channel by calling the
 ``deliver(Int)`` method of ``EventsourcingExtension`` with the channel
 id as argument. Refer to the
-```ReliableChannel`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannel>`__
+`ReliableChannel <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannel>`__
 API docs for details.
 
 A ``ReliableChannel`` is created and registered in the same way as a
 default channel except that a
-```ReliableChannelProps`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannelProps>`__
+`ReliableChannelProps <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.ReliableChannelProps>`__
 configuration object is used.
 
 ::
@@ -1021,7 +1021,7 @@ configuration object is used.
 
 This configuration object additionally allows applications to configure
 a
-```RedeliveryPolicy`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.RedeliveryPolicy>`__
+`RedeliveryPolicy <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.RedeliveryPolicy>`__
 for the channel.
 
 Reliable request-reply channel
@@ -1036,16 +1036,16 @@ request-reply interactions between a request sender (usually an
 following properties in addition to a plain reliable channel. It
 
 -  extracts requests from received
-   ```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s
+   `Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s
    before sending them to the destination.
 -  wraps replies from the destination into a ``Message`` before sending
    them back to the request sender.
 -  sends a special
-   ```DestinationNotResponding`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.patterns.DestinationNotResponding>`__
+   `DestinationNotResponding <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.patterns.DestinationNotResponding>`__
    reply to the request sender if the destination doesn't reply within a
    configurable reply timeout.
 -  sends a special
-   ```DestinationFailure`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.patterns.DestinationFailure>`__
+   `DestinationFailure <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.patterns.DestinationFailure>`__
    reply to the request sender if destination responds with
    ``Status.Failure``.
 -  guarantees at-least-once delivery of replies to the request sender
@@ -1058,7 +1058,7 @@ following properties in addition to a plain reliable channel. It
 
 A reliable request-reply channel is created and registered in the same
 way as a reliable channel except that a
-```ReliableRequestReplyChannelProps`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.patterns.ReliableRequestReply$ReliableRequestReplyChannelProps>`__
+`ReliableRequestReplyChannelProps <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.patterns.ReliableRequestReply$ReliableRequestReplyChannelProps>`__
 configuration object is used.
 
 ::
@@ -1112,7 +1112,7 @@ Recovery
 
 Recovery is a procedure that re-creates the state of event-sourced
 applications consisting of
-```Eventsourced`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
+`Eventsourced <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
 actors (processors) and `channels <#channels>`__. Recovery is usually
 done at application start, either after normal termination or after a
 crash.
@@ -1159,7 +1159,7 @@ important for the recovery of processors and channels that are connected
 to cyclic, directed graphs.
 
 The
-```EventsourcingExtension`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__
+`EventsourcingExtension <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__
 also supports event message replay for individual processors (refer to
 the API docs for details). This can be useful in situations where
 processors are registered at ``extension`` after an initial recovery.
@@ -1193,7 +1193,7 @@ sent to any registered processor, after ``recover`` successfully
 returned, will be processed after the replayed event messages.
 Applications that want to wait for processors to complete processing of
 replayed event messages, should use the ``awaitProcessing()`` method of
-```EventsourcingExtension`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__.
+`EventsourcingExtension <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.EventsourcingExtension>`__.
 
 ::
 
@@ -1244,7 +1244,7 @@ State dependencies
 ~~~~~~~~~~~~~~~~~~
 
 The behavior of
-```Eventsourced`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
+`Eventsourced <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Eventsourced>`__
 processors may depend on the state of other ``Eventsourced`` processors.
 For example, processor A sends a message to processor B and processor B
 replies with a message that includes (part of) processor B's state.
@@ -1252,7 +1252,7 @@ Depending on the state value included in the reply, processor A may take
 different actions. To ensure a proper recovery of such a setup, any
 state-conveying or state-dependent messages exchanged between processors
 A and B must be of type
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__
 (see also
 `DependentStateRecoverySpec.scala <https://github.com/eligosource/eventsourced/blob/master/es-core/src/test/scala/org/eligosource/eventsourced/core/DependentStateRecoverySpec.scala>`__).
 Exchanging state via non-journaled messages (i.e. messages of type other
@@ -1271,7 +1271,7 @@ Behavior changes
 Actors that are modified with a stackable ``Receiver``, ``Emitter``
 and/or ``Eventsourced`` trait can change their behavior with the methods
 ``become()`` and ``unbecome()``. These are defined on the
-```Behavior`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Behavior>`__
+`Behavior <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Behavior>`__
 trait from which ``Receiver``, ``Emitter`` and ``Eventsourced`` inherit.
 
 Actors that change their behavior with ``become()`` and ``unbecome()``
@@ -1813,13 +1813,13 @@ to cluster events. If a ``NodeActor`` becomes the master (= leader) it
 creates and recovers a ``Door`` instance. The other ``NodeActor``\ s
 obtain a remote reference to the ``Door`` instance on master.
 
-|Clustering|
+|Clustering1|
 
 Clients interact with the ``Door`` singleton via ``NodeActor``\ s by
 sending them door commands (``"open"`` or ``"close"``). ``NodeActor``\ s
 accept commands on any cluster node, not only on master. A ``NodeActor``
 forwards these commands to the ``Door`` as command
-```Message`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s.
+`Message <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Message>`__\ s.
 Event ``Message``\ s emitted by the ``Door`` are sent to a remote
 ``Destination`` actor via the named ``"destination"`` channel. The
 ``Destination`` creates a response from the received events and sends
@@ -1833,7 +1833,7 @@ When the master crashes, another node in the cluster becomes the master
 and recovers the ``Door`` state machine. The remaining slave node renews
 its remote reference to the ``Door`` instance on the new master.
 
-|Clustering|
+|Clustering2|
 
 Code from this section is contained in
 `ClusterExample.scala <https://github.com/eligosource/eventsourced/blob/master/es-examples/src/main/scala/org/eligosource/eventsourced/example/ClusterExample.scala>`__,
@@ -1942,7 +1942,7 @@ Multicast processor
 |Multicast|
 
 The
-```Multicast`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Multicast>`__
+`Multicast <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.Multicast>`__
 processor is a predefined ``Eventsourced`` processor that forwards
 received event messages to multiple targets. Using a ``Multicast``
 processor with n targets is an optimization of having n ``Eventsourced``
@@ -1955,7 +1955,7 @@ increase throughput.
 
 Applications can create a ``Multicast`` processor with the ``multicast``
 factory method which is defined in package
-```core`` <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.package>`__.
+`core <http://eligosource.github.com/eventsourced/api/snapshot/#org.eligosource.eventsourced.core.package>`__.
 
 ::
 
@@ -2048,7 +2048,7 @@ Appendix D: Support
 .. |Reliable request-reply channel| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/channels-3.png
 .. |Order management| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/ordermgnt-1.png
 .. |State machines| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/statemachines-1.png
-.. |Clustering| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/clustering-1.png
-.. |Clustering| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/clustering-2.png
+.. |Clustering1| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/clustering-1.png
+.. |Clustering2| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/clustering-2.png
 .. |Multicast| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/multicast-1.png
 .. |Legend| image:: https://raw.github.com/eligosource/eventsourced/master/doc/images/legend.png
